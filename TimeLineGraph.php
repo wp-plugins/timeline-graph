@@ -37,7 +37,6 @@ $meta_box = array(
 );
 
 if (!class_exists("TimeLineGraph")) :
-    include 'php/Database.php';
 class TimeLineGraph {
 	var $addpage;
         var $db;
@@ -51,9 +50,6 @@ class TimeLineGraph {
 		register_activation_hook( __FILE__, array(&$this,'activate') );
 		register_deactivation_hook( __FILE__, array(&$this,'deactivate') );
 
-                if (class_exists("DatabaseManager")) {
-                    $this->db = new DatabaseManager();
-                }
                 
 	}
 
@@ -69,8 +65,8 @@ class TimeLineGraph {
         }
 
         function activate() {
-            add_option("timeline_width", "550px", "",'yes');
-            add_option("timeline_height", "350px", "",'yes');
+            add_option("timeline_width", "550", "",'yes');
+            add_option("timeline_height", "350", "",'yes');
 	}
 
 	function deactivate() {
